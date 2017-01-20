@@ -11,9 +11,13 @@ public class InputManager : MonoBehaviour, IInput {
 	void Update () {
         if (sequenceP1.Length == 4) {
             // Send player 1 is finished
+            PusherHandler.instance.ActivatePusher(sequenceP1, colorP1);
+            sequenceP1 = "";
         }
         if (sequenceP1.Length == 4) {
             // Send player 2 is finished
+            PusherHandler.instance.ActivatePusher(sequenceP2, colorP2);
+            sequenceP2 = "";
         }
 	}
 
