@@ -138,7 +138,8 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 45
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114267380241715176, guid: 58b04acefede75f45a9dd9682c310eca, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 58b04acefede75f45a9dd9682c310eca, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &143355865 stripped
@@ -162,6 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6bbee5a54b0c3c47b358091e99d42e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wavePrefab: {fileID: 1364850524951900, guid: 21d57ff9e3990c54cb1232df722796e6, type: 2}
   activatedColor: {r: 0, g: 0, b: 0, a: 0}
   activatedTime: 1
   identity: EEDD
@@ -220,7 +222,8 @@ Prefab:
       propertyPath: m_LocalScale.y
       value: 0.7500005
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114267380241715176, guid: 58b04acefede75f45a9dd9682c310eca, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 58b04acefede75f45a9dd9682c310eca, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &156921024 stripped
@@ -244,6 +247,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6bbee5a54b0c3c47b358091e99d42e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wavePrefab: {fileID: 1364850524951900, guid: 21d57ff9e3990c54cb1232df722796e6, type: 2}
   activatedColor: {r: 0, g: 0, b: 0, a: 0}
   activatedTime: 1
   identity: AAAA
@@ -503,7 +507,8 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114267380241715176, guid: 58b04acefede75f45a9dd9682c310eca, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 58b04acefede75f45a9dd9682c310eca, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &309404846 stripped
@@ -527,6 +532,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6bbee5a54b0c3c47b358091e99d42e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wavePrefab: {fileID: 1364850524951900, guid: 21d57ff9e3990c54cb1232df722796e6, type: 2}
   activatedColor: {r: 0, g: 0, b: 0, a: 0}
   activatedTime: 1
   identity: DDDD
@@ -810,7 +816,8 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -45.000004
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114267380241715176, guid: 58b04acefede75f45a9dd9682c310eca, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 58b04acefede75f45a9dd9682c310eca, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &531782351 stripped
@@ -834,6 +841,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6bbee5a54b0c3c47b358091e99d42e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wavePrefab: {fileID: 1364850524951900, guid: 21d57ff9e3990c54cb1232df722796e6, type: 2}
   activatedColor: {r: 0, g: 0, b: 0, a: 0}
   activatedTime: 1
   identity: AAEE
@@ -884,7 +892,8 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 45
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114267380241715176, guid: 58b04acefede75f45a9dd9682c310eca, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 58b04acefede75f45a9dd9682c310eca, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &621701494 stripped
@@ -908,6 +917,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6bbee5a54b0c3c47b358091e99d42e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wavePrefab: {fileID: 1364850524951900, guid: 21d57ff9e3990c54cb1232df722796e6, type: 2}
   activatedColor: {r: 0, g: 0, b: 0, a: 0}
   activatedTime: 1
   identity: EDDD
@@ -1098,6 +1108,12 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114267380241715176, guid: 58b04acefede75f45a9dd9682c310eca,
+        type: 2}
+      propertyPath: wavePrefab
+      value: 
+      objectReference: {fileID: 1364850524951900, guid: 21d57ff9e3990c54cb1232df722796e6,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 58b04acefede75f45a9dd9682c310eca, type: 2}
   m_IsPrefabParent: 0
@@ -1106,25 +1122,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4111893671621614, guid: 58b04acefede75f45a9dd9682c310eca,
     type: 2}
   m_PrefabInternal: {fileID: 844252196}
---- !u!1 &844252198 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1403536889307832, guid: 58b04acefede75f45a9dd9682c310eca,
-    type: 2}
-  m_PrefabInternal: {fileID: 844252196}
---- !u!114 &844252199
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 844252198}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6bbee5a54b0c3c47b358091e99d42e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  activatedColor: {r: 0, g: 0, b: 0, a: 0}
-  activatedTime: 1
-  identity: EEEE
 --- !u!1 &1113138094
 GameObject:
   m_ObjectHideFlags: 0
@@ -1490,7 +1487,8 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -45.000004
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114267380241715176, guid: 58b04acefede75f45a9dd9682c310eca, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 58b04acefede75f45a9dd9682c310eca, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &1226954591 stripped
@@ -1514,6 +1512,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6bbee5a54b0c3c47b358091e99d42e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wavePrefab: {fileID: 1364850524951900, guid: 21d57ff9e3990c54cb1232df722796e6, type: 2}
   activatedColor: {r: 0, g: 0, b: 0, a: 0}
   activatedTime: 1
   identity: AAAE
@@ -1564,7 +1563,8 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -45.000004
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114267380241715176, guid: 58b04acefede75f45a9dd9682c310eca, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 58b04acefede75f45a9dd9682c310eca, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &1284772688 stripped
@@ -1588,6 +1588,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6bbee5a54b0c3c47b358091e99d42e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wavePrefab: {fileID: 1364850524951900, guid: 21d57ff9e3990c54cb1232df722796e6, type: 2}
   activatedColor: {r: 0, g: 0, b: 0, a: 0}
   activatedTime: 1
   identity: AEEE
@@ -1712,7 +1713,8 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 45
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114267380241715176, guid: 58b04acefede75f45a9dd9682c310eca, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 58b04acefede75f45a9dd9682c310eca, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &1391384035 stripped
@@ -1736,6 +1738,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6bbee5a54b0c3c47b358091e99d42e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wavePrefab: {fileID: 1364850524951900, guid: 21d57ff9e3990c54cb1232df722796e6, type: 2}
   activatedColor: {r: 0, g: 0, b: 0, a: 0}
   activatedTime: 1
   identity: EEED

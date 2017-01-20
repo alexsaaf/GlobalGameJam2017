@@ -19,7 +19,7 @@ public class PlaneWave : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-        transform.Translate(transform.up * speed* Time.deltaTime);
+        transform.Translate(transform.up * speed* Time.deltaTime, Space.World);
 	}
 
     void OnTriggerEnter2D(Collider2D other) {

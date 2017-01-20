@@ -7,6 +7,8 @@ using UnityEngine;
 [RequireComponent(typeof(SpriteRenderer))]
 public class Pusher : MonoBehaviour {
 
+    public GameObject wavePrefab;
+
     public Color activatedColor;
     public float activatedTime;
 
@@ -36,6 +38,7 @@ public class Pusher : MonoBehaviour {
 
     public void Activate() {
         StartCoroutine("ActivateIndication");
+        Instantiate(wavePrefab, transform.position, transform.localRotation);
     }
 
     IEnumerator ActivateIndication() {
