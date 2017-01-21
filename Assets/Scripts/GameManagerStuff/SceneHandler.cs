@@ -6,10 +6,12 @@ using UnityEngine.SceneManagement;
 public class SceneHandler : MonoBehaviour {
 
     private Fading fading;
+    private GameManagerScript GMS;
 
 	// Use this for initialization
 	void Start () {
         SceneHandler.DontDestroyOnLoad(gameObject);
+        GMS = GetComponent<GameManagerScript>();
         fading = GetComponent<Fading>();
 	}
 	
@@ -19,16 +21,35 @@ public class SceneHandler : MonoBehaviour {
 	}
 
     public void LoadMainMenu() {
+        SetupGMS();
         StartCoroutine("MainSceneLoadFading");
     }
 
     public void LoadEndScene() {
+        SetupGMS();
         StartCoroutine("EndSceneLoadFading");
     }
 
     public void LoadNextScene() {
-        Debug.Log("FUCK YOU I AM A SCENELOADER");
+        SetupGMS();
         StartCoroutine("NextScene");
+    }
+
+    public void StartGame() {
+        GMS.gameStarting = true;
+        GMS.ResetStats();
+        StartCoroutine("FirstLevelLoadFading");
+    }
+
+    void SetupGMS() {
+        GMS.gameStarting = false;
+        GMS.spawnCats = false;
+    }
+
+    IEnumerator FirstLevelLoadFading() {
+        float fadeTime = fading.BeginFade(1);
+        yield return new WaitForSeconds(fadeTime);
+        SceneManager.LoadSceneAsync("FirstLevel");
     }
 
     IEnumerator MainSceneLoadFading() {

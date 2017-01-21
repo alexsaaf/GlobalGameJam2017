@@ -38,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1909065735592972}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.52, z: 0}
+  m_LocalPosition: {x: 4.2484, y: 2.9472103, z: 0}
   m_LocalScale: {x: 0.4, y: 0.4, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -129,3 +129,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   score: 5
   playerNumber: 1
+  meow1: {fileID: 8300000, guid: 73e5f3b56adc2e9459b85e247b9351d2, type: 3}
+  meow2: {fileID: 8300000, guid: da176b18f77307a43ba60540b8360e55, type: 3}
+  minMeowCooldown: 2
+  maxMeowCooldown: 4
+  pearSprite: {fileID: 0}
+  raspSprite: {fileID: 0}
