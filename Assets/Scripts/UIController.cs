@@ -69,7 +69,7 @@ public class UIController : MonoBehaviour {
         }
 
         public void AssignSymbol(Text symbol, char c) {
-            string character = c.ToString()§.ToUpper();
+            string character = c.ToString().ToUpper();
             symbol.text = character;
             switch (character) {
                 case "E":
