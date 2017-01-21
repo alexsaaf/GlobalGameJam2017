@@ -19,7 +19,7 @@ public class UIController : MonoBehaviour {
     Image beat2;
 
     Vector2 originalBeatSize;
-    public float shrinkSpeed;
+    public float alphaSpeed;
 
 	void Start () {
         player1 = new Player();
@@ -50,17 +50,15 @@ public class UIController : MonoBehaviour {
 
         gm = GameObject.Find("GameManager").GetComponent<GameManagerScript>();
 
-        originalBeatSize = beat1.rectTransform.sizeDelta;
     }
 	
 	void Update () {
         player1.pointBar.fillAmount = gm.GetFillAmount(1);
         player2.pointBar.fillAmount = gm.GetFillAmount(2);
 
-        float oldSize = beat1.rectTransform.sizeDelta.x;
-        print(oldSize);
-        beat1.rectTransform.sizeDelta = new Vector2(oldSize - shrinkSpeed, oldSize - shrinkSpeed);
-        beat2.rectTransform.sizeDelta = new Vector2(oldSize - shrinkSpeed, oldSize - shrinkSpeed);
+        beat1.color = new Color(beat1.color.r, beat1.color.g, beat1.color.b, beat1.color.a - alphaSpeed * Time.deltaTime);
+        beat2.color = new Color(beat2.color.r, beat2.color.g, beat2.color.b, beat2.color.a - alphaSpeed * Time.deltaTime);
+
     }
 
     public void UpdatePlayerSequence(int playerNumber, string sequence) {
@@ -80,8 +78,8 @@ public class UIController : MonoBehaviour {
     }
 
     public void Beat() {
-        beat1.rectTransform.sizeDelta = originalBeatSize;
-        beat2.rectTransform.sizeDelta = originalBeatSize;
+        beat1.color = new Color(beat1.color.r, beat1.color.g, beat1.color.b, 1);
+        beat2.color = new Color(beat2.color.r, beat2.color.g, beat2.color.b, 1);
     }
 
     public struct Player {
