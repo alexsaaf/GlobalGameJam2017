@@ -6,8 +6,8 @@ public class GameManagerScript : MonoBehaviour {
 
 
     // The score for the players
-    public float playerOneScore = 0;
-    public float playerTwoScore = 0;
+    float playerOneScore = 0;
+    float playerTwoScore = 0;
 
     public float winScore = 10f;
 
@@ -20,15 +20,37 @@ public class GameManagerScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (playerOneScore >= winScore || playerTwoScore >= winScore) {
-            sceneHandler.LoadEndScene();
-        }
+        CheckScore();
         if (Input.GetButtonDown("EndGame")) {
             sceneHandler.LoadMainMenu();
         }
         if (Input.GetButtonDown("Next")) {
             Debug.Log("Loading the NExt scene");
             sceneHandler.LoadNextScene();
+        }
+    }
+
+    void CheckScore() {
+        if (playerOneScore >= winScore || playerTwoScore >= winScore) {
+            sceneHandler.LoadEndScene();
+        }
+    }
+
+    void AddScore(int player, float score) {
+        if (player == 1) {
+            playerOneScore += score;
+        } else {
+            playerTwoScore += score;
+        }
+        CheckScore();
+    }
+
+    float GetFillAmount(int player) {
+        if (player == 1) {
+            return playerOneScore / winScore;
+        }
+        else {
+            return playerTwoScore / winScore;
         }
     }
 }
