@@ -30,6 +30,7 @@ public class PlaneWave : MonoBehaviour {
             Rigidbody2D body = other.GetComponent<Rigidbody2D>();
             Debug.Log("Found Cat");
             if (body != null) {
+                other.gameObject.GetComponent<CatScript>().WaveCollide();
                 Debug.Log("Adding force to the Cat");
                 body.AddForce(transform.up * speed * forceMultiplier);
                 encounteredCats.Add(other.transform);
