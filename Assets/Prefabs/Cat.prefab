@@ -129,7 +129,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   score: 5
   playerNumber: 1
-  meow1: {fileID: 8300000, guid: 84678e31c13920b47bc10cb310967036, type: 3}
-  meow2: {fileID: 8300000, guid: 51d019677cf0b8149aa95c8a2e197e6e, type: 3}
+  meow1: {fileID: 8300000, guid: 61000d343c3213049b32d2d537e2c502, type: 3}
+  meow2: {fileID: 8300000, guid: fd2fedad2ffc90945b3b5cf949874d46, type: 3}
   minMeowCooldown: 2
   maxMeowCooldown: 4
