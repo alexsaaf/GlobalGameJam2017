@@ -11,6 +11,8 @@ public class CatScript : MonoBehaviour {
     public int minMeowCooldown;
     public int maxMeowCooldown;
     private float meowTimer = 0;
+    public Sprite pearSprite;
+    public Sprite raspSprite;
 	
 	// Update is called once per frame
 	void Update () {
