@@ -14,8 +14,6 @@ public class GameManagerScript : MonoBehaviour {
     private SceneHandler sceneHandler;
 
     public int bpm = 60;
-    private float timeBetweenBeats;
-    private float timer = 0;
 
     bool gameOver = false;
 
@@ -30,7 +28,6 @@ public class GameManagerScript : MonoBehaviour {
         if (!gameOver) {
             CheckScore();
         }
-        
     }
 
     void CheckScore() {
@@ -60,6 +57,5 @@ public class GameManagerScript : MonoBehaviour {
 
     public void UpdateBeat(int bpm) {
         this.bpm = bpm;
-        timeBetweenBeats = 60 / bpm;
     }
 }
