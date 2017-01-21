@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class UIController : MonoBehaviour {
 
+    GameManagerScript gm;
+
     public static Color eColor;
     public static Color aColor;
     public static Color dColor;
@@ -30,12 +32,12 @@ public class UIController : MonoBehaviour {
         player2.symbol3 = symbolHolder.GetChild(2).GetComponent<Text>();
         player2.symbol4 = symbolHolder.GetChild(3).GetComponent<Text>();
 
-
+        gm = GameObject.Find("GameManager").GetComponent<GameManagerScript>();
     }
 	
 	void Update () {
-        player1.pointBar.fillAmount = 0;
-        player2.pointBar.fillAmount = 0; 
+        player1.pointBar.fillAmount = gm.GetFillAmount(1);
+        player2.pointBar.fillAmount = gm.GetFillAmount(2); 
 	}
 
     public void UpdatePlayerSequence(int playerNumber, string sequence) {
@@ -46,6 +48,13 @@ public class UIController : MonoBehaviour {
         }
     }
 
+    public void IncorrectSequence(int playerNumber) {
+        if (playerNumber == 1) {
+            player1.Error();
+        } else {
+            player2.Error();
+        }
+    }
 
     public struct Player {
         public Image pointBar;
@@ -54,9 +63,9 @@ public class UIController : MonoBehaviour {
         public void UpdateSequence(string sequence) {
             char[] characters = sequence.ToCharArray();
             AssignSymbol(symbol1, characters[0]);
-            AssignSymbol(symbol1, characters[1]);
-            AssignSymbol(symbol1, characters[2]);
-            AssignSymbol(symbol1, characters[3]);
+            AssignSymbol(symbol1, (characters.Length > 1) ? characters[1] : ' ');
+            AssignSymbol(symbol1, (characters.Length > 2) ? characters[2] : ' ');
+            AssignSymbol(symbol1, (characters.Length > 3) ? characters[3] : ' ');
         }
 
         public void AssignSymbol(Text symbol, char c) {
@@ -77,6 +86,9 @@ public class UIController : MonoBehaviour {
                     break;
             }
         }
-    }
 
+        public void Error() {
+
+        }
+    }
 }

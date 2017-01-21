@@ -13,21 +13,20 @@ public class GameManagerScript : MonoBehaviour {
 
     private SceneHandler sceneHandler;
 
+    public int bpm = 60;
+    private float timeBetweenBeats;
+    private float timer = 0;
+
 	// Use this for initialization
 	void Start () {
         sceneHandler = GetComponent<SceneHandler>();
+        UpdateBeat(bpm);
 	}
 	
 	// Update is called once per frame
 	void Update () {
         CheckScore();
-        if (Input.GetButtonDown("EndGame")) {
-            sceneHandler.LoadMainMenu();
-        }
-        if (Input.GetButtonDown("Next")) {
-            Debug.Log("Loading the NExt scene");
-            sceneHandler.LoadNextScene();
-        }
+        
     }
 
     void CheckScore() {
@@ -36,7 +35,7 @@ public class GameManagerScript : MonoBehaviour {
         }
     }
 
-    void AddScore(int player, float score) {
+    public void AddScore(int player, float score) {
         if (player == 1) {
             playerOneScore += score;
         } else {
@@ -45,12 +44,17 @@ public class GameManagerScript : MonoBehaviour {
         CheckScore();
     }
 
-    float GetFillAmount(int player) {
+    public float GetFillAmount(int player) {
         if (player == 1) {
             return playerOneScore / winScore;
         }
         else {
             return playerTwoScore / winScore;
         }
+    }
+
+    public void UpdateBeat(int bpm) {
+        this.bpm = bpm;
+        timeBetweenBeats = 60 / bpm;
     }
 }
