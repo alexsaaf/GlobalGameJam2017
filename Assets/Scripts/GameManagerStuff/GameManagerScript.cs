@@ -4,24 +4,35 @@ using UnityEngine;
 
 public class GameManagerScript : MonoBehaviour {
 
+    public Transform[] spawnPositions;
 
     // The score for the players
     float playerOneScore = 0;
     float playerTwoScore = 0;
+    int playerOneCats = 0;
+    int playerTwoCats = 0;
+
+    public int numberOfCatsPerTeam = 3;
 
     public float winScore = 10f;
 
     private SceneHandler sceneHandler;
 
     public int bpm = 60;
-    private float timeBetweenBeats;
-    private float timer = 0;
 
 	// Use this for initialization
 	void Start () {
         sceneHandler = GetComponent<SceneHandler>();
-        UpdateBeat(bpm);
+
 	}
+
+    void SpawnCat(int player) {
+        Transform pos_one = spawnPositions[Random.Range(0, 3)];
+        Transform pos_two = spawnPositions[Random.Range(0, 3)];
+        Vector3 direction = pos_one.position - pos_two.position;
+        float randomRange = Random.Range(0, 1);
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -55,6 +66,5 @@ public class GameManagerScript : MonoBehaviour {
 
     public void UpdateBeat(int bpm) {
         this.bpm = bpm;
-        timeBetweenBeats = 60 / bpm;
     }
 }
