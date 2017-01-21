@@ -36,7 +36,7 @@ public class GameManagerScript : MonoBehaviour {
         }
     }
 
-    void AddScore(int player, float score) {
+    public void AddScore(int player, float score) {
         if (player == 1) {
             playerOneScore += score;
         } else {
@@ -45,7 +45,7 @@ public class GameManagerScript : MonoBehaviour {
         CheckScore();
     }
 
-    float GetFillAmount(int player) {
+    public float GetFillAmount(int player) {
         if (player == 1) {
             return playerOneScore / winScore;
         }

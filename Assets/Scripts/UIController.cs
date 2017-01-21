@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class UIController : MonoBehaviour {
 
+    GameManagerScript gm;
+
     public static Color eColor;
     public static Color aColor;
     public static Color dColor;
@@ -29,11 +31,13 @@ public class UIController : MonoBehaviour {
         player2.symbol2 = symbolHolder.GetChild(1).GetComponent<Text>();
         player2.symbol3 = symbolHolder.GetChild(2).GetComponent<Text>();
         player2.symbol4 = symbolHolder.GetChild(3).GetComponent<Text>();
+
+        gm = GameObject.Find("GameManager").GetComponent<GameManagerScript>();
     }
 	
 	void Update () {
-        player1.pointBar.fillAmount = 0;
-        player2.pointBar.fillAmount = 0; 
+        player1.pointBar.fillAmount = gm.GetFillAmount(1);
+        player2.pointBar.fillAmount = gm.GetFillAmount(2); 
 	}
 
     public void UpdatePlayerSequence(int playerNumber, string sequence) {
