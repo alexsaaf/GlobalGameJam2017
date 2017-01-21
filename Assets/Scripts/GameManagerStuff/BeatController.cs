@@ -3,7 +3,7 @@
 public class BeatController : MonoBehaviour {
 
     public int bpm;
-    public float timeBetweenBeats;
+    private float timeBetweenBeats;
     private float timer;
     private bool isBeating;
     private UIController ui;
@@ -13,15 +13,23 @@ public class BeatController : MonoBehaviour {
         if (ui == null) {
             Debug.Log("UIController was not found in BeatController.Start");
         }
+        if (bpm != 0) {
+            Debug.Log("Set timeBetweenBeats to " + 60 / bpm);
+            timeBetweenBeats = 60 / bpm;
+        } 
 	}
 	
 	void Update () {
-		if (isBeating) {
-            if (timer <= 0) {
-                timer = timeBetweenBeats + timer;
-                Beat();
+        if (timeBetweenBeats != 0) {
+            if (isBeating) {
+                if (timer <= 0) {
+                    timer = timeBetweenBeats + timer;
+                    Beat();
+                }
+                timer -= Time.deltaTime;
             }
-            timer -= Time.deltaTime;
+        } else {
+            Debug.Log("timeBetweenBeats set to 0 in BeatController");
         }
 	}
 
