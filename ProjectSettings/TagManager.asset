@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Wall
   - SawBlade
+  - Cat
   layers:
   - Default
   - TransparentFX
