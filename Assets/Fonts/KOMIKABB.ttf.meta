@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 48fa570843f6fea43b43664bce0edf2b
+timeCreated: 1484993792
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Komika Bubbles
+  fontNames:
+  - Komika Bubbles
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

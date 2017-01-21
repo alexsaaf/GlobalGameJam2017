@@ -26,11 +26,10 @@ public class Pusher : MonoBehaviour {
         sr = GetComponent<SpriteRenderer>();
         standardColor = sr.color;
 	}
-	
+
     public void ActivateIdentity(string idToActivate, Color playerColor) {
 
         if(idToActivate.Equals(identity)) {
-            Debug.Log("Activating");
             activatedColor = playerColor;
             Activate();
         }
@@ -39,7 +38,7 @@ public class Pusher : MonoBehaviour {
     public void Activate() {
         StartCoroutine("ActivateIndication");
         BoxCollider2D bc2d = wavePrefab.GetComponent<BoxCollider2D>();
-        Vector3 pos = transform.position + transform.up * (sr.bounds.size.y + bc2d.bounds.size.y);
+        Vector3 pos = transform.position + transform.up * (sr.bounds.size.y/2 + bc2d.bounds.size.y);
         Instantiate(wavePrefab, pos, transform.localRotation);
     }
 
