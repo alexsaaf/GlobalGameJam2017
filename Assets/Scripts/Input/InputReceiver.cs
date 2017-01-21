@@ -45,7 +45,6 @@ public class InputReceiver : MonoBehaviour {
         if (Input.GetButtonDown("G" + playerNumber.ToString())) {
             inputManager.playG(playerNumber);
         }
-
     }
 
     void receiveInputMusical(int playerNumber) {
