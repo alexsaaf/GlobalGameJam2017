@@ -1481,7 +1481,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d1823a9c067e1844985eb4366ab3a83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bpm: 0
+  bpm: 60
 --- !u!1001 &509852199
 Prefab:
   m_ObjectHideFlags: 0

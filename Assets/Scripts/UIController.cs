@@ -78,8 +78,8 @@ public class UIController : MonoBehaviour {
     }
 
     public void Beat() {
-        beat1.color = new Color(beat1.color.r, beat1.color.g, beat1.color.b, 255);
-        beat2.color = new Color(beat2.color.r, beat2.color.g, beat2.color.b, 255);
+        beat1.color = new Color(beat1.color.r, beat1.color.g, beat1.color.b, 1);
+        beat2.color = new Color(beat2.color.r, beat2.color.g, beat2.color.b, 1);
     }
 
     public struct Player {
