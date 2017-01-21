@@ -56,6 +56,10 @@ public class UIController : MonoBehaviour {
         }
     }
 
+    public void Beat() {
+
+    }
+
     public struct Player {
         public Image pointBar;
         public Text symbol1, symbol2, symbol3, symbol4;
@@ -90,9 +94,6 @@ public class UIController : MonoBehaviour {
         public void Error() {
 
         }
-
-        public void Beat() {
-
-        }
     }
+
 }
