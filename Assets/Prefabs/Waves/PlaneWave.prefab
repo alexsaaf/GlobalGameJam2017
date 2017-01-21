@@ -20,9 +20,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4382962233022048}
   - component: {fileID: 114354151037337954}
-  - component: {fileID: 61419320501575402}
   - component: {fileID: 50432385248672356}
   - component: {fileID: 212988127777809694}
+  - component: {fileID: 60916927969792974}
   m_Layer: 0
   m_Name: PlaneWave
   m_TagString: Untagged
@@ -37,8 +37,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1364850524951900}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.01, y: -0.01, z: 0}
-  m_LocalScale: {x: 0.94259316, y: 0.87698954, z: 0.6169937}
+  m_LocalPosition: {x: -0.02, y: -3.23, z: 0}
+  m_LocalScale: {x: 0.4, y: 0.5, z: 0.6169937}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -63,8 +63,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &61419320501575402
-BoxCollider2D:
+--- !u!60 &60916927969792974
+PolygonCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -74,9 +74,18 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 1}
-  serializedVersion: 2
-  m_Size: {x: 4, y: 1}
+  m_Offset: {x: 0, y: 0}
+  m_Points:
+    m_Paths:
+    - - {x: -0.017559454, y: 1.7919006}
+      - {x: 2.2034647, y: 1.2922902}
+      - {x: 2.950208, y: 0.17442226}
+      - {x: 1.9915975, y: -0.6462722}
+      - {x: 1.5350811, y: -1.8230009}
+      - {x: -1.4297241, y: -1.8510962}
+      - {x: -1.8122842, y: -0.8767619}
+      - {x: -2.7864337, y: 0.50892305}
+      - {x: -2.1332266, y: 1.3203864}
 --- !u!114 &114354151037337954
 MonoBehaviour:
   m_ObjectHideFlags: 1

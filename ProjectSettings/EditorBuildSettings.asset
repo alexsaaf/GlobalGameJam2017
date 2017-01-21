@@ -8,6 +8,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/MainMenu.unity
   - enabled: 1
-    path: Assets/_Scenes/KevinAlexTestcorner.unity
+    path: Assets/_Scenes/GameSettingsMenu.unity
+  - enabled: 1
+    path: Assets/_Scenes/FirstLevel.unity
   - enabled: 1
     path: Assets/_Scenes/EndScene.unity
