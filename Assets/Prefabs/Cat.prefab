@@ -90,8 +90,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   score: 5
   playerNumber: 1
-  meow1: {fileID: 8300000, guid: 728fc431ac2618c40a1d80a4868f98a9, type: 3}
-  meow2: {fileID: 8300000, guid: 5a3d2a613f3769e478836aab5ef1906f, type: 3}
+  meow1: {fileID: 8300000, guid: 73e5f3b56adc2e9459b85e247b9351d2, type: 3}
+  meow2: {fileID: 8300000, guid: da176b18f77307a43ba60540b8360e55, type: 3}
   minMeowCooldown: 2
   maxMeowCooldown: 4
   pearSprite: {fileID: 21300000, guid: 6548890503160a1459c955e7f44db31b, type: 3}
