@@ -90,5 +90,9 @@ public class UIController : MonoBehaviour {
         public void Error() {
 
         }
+
+        public void Beat() {
+
+        }
     }
 }

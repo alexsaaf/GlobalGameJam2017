@@ -23,7 +23,7 @@ public class SceneHandler : MonoBehaviour {
     }
 
     public void LoadEndScene() {
-        StartCoroutine("EndSceneLoadingFading");
+        StartCoroutine("EndSceneLoadFading");
     }
 
     public void LoadNextScene() {

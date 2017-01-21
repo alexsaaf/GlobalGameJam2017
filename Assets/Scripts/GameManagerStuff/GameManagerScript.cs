@@ -17,6 +17,8 @@ public class GameManagerScript : MonoBehaviour {
     private float timeBetweenBeats;
     private float timer = 0;
 
+    bool gameOver = false;
+
 	// Use this for initialization
 	void Start () {
         sceneHandler = GetComponent<SceneHandler>();
@@ -25,13 +27,16 @@ public class GameManagerScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        CheckScore();
+        if (!gameOver) {
+            CheckScore();
+        }
         
     }
 
     void CheckScore() {
         if (playerOneScore >= winScore || playerTwoScore >= winScore) {
             sceneHandler.LoadEndScene();
+            gameOver = true;
         }
     }
 
