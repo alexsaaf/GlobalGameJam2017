@@ -4,10 +4,4 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes:
-  - enabled: 1
-    path: Assets/_Scenes/MainMenu.unity
-  - enabled: 1
-    path: Assets/_Scenes/philip.unity
-  - enabled: 1
-    path: Assets/_Scenes/EndScene.unity
+  m_Scenes: []
