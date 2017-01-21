@@ -29,9 +29,13 @@ public class CatScript : MonoBehaviour {
         }
 	}
 
+    public void WaveCollide () {
+        GetComponent<Animator>().Play("CatWave");
+    }
+
     public void OnDeath () {
         GameObject.Find("GameManager").GetComponent<GameManagerScript>().AddScore(playerNumber, score);
-        GameObject.Destroy(gameObject);
+        Destroy(gameObject);
     }
 
     public void AssignPlayer(int playerNumber) {

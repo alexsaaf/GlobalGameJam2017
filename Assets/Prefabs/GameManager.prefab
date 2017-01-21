@@ -77,6 +77,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de26b4f79feb8e74c9b61f16db37ec5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerOneScore: 0
-  playerTwoScore: 0
+  catPrefab: {fileID: 1909065735592972, guid: f37f17baadae3f344870e597c5dcac86, type: 2}
+  numberOfCatsPerTeam: 3
   winScore: 10
+  bpm: 60
+  spawnCats: 0
+  gameStarting: 0

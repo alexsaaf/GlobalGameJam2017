@@ -20,9 +20,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4803609121173374}
   - component: {fileID: 212844865652624154}
-  - component: {fileID: 114338363526797558}
-  - component: {fileID: 50666299537941664}
-  - component: {fileID: 68463883456074118}
   m_Layer: 0
   m_Name: Sawblade
   m_TagString: SawBlade
@@ -39,9 +36,12 @@ GameObject:
   m_Component:
   - component: {fileID: 4175612770648484}
   - component: {fileID: 114622525471546150}
+  - component: {fileID: 50381120637836810}
+  - component: {fileID: 68357361768250544}
+  - component: {fileID: 114332894316177828}
   m_Layer: 0
   m_Name: Sawblade
-  m_TagString: Untagged
+  m_TagString: SawBlade
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -52,9 +52,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1894548594175396}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.4694536, y: 0.46945348, z: 0.46945348}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.012, y: -0.012, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0.46945348}
   m_Children:
   - {fileID: 4803609121173374}
   m_Father: {fileID: 0}
@@ -73,13 +73,13 @@ Transform:
   m_Father: {fileID: 4175612770648484}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &50666299537941664
+--- !u!50 &50381120637836810
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1261414238425468}
+  m_GameObject: {fileID: 1894548594175396}
   m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
@@ -93,53 +93,53 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!68 &68463883456074118
+--- !u!68 &68357361768250544
 EdgeCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1261414238425468}
+  m_GameObject: {fileID: 1894548594175396}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   m_Points:
-  - {x: 1.5112619, y: 0.26027715}
-  - {x: 1.0459146, y: -0.03349805}
-  - {x: 0.14846706, y: 0.14209336}
-  - {x: 0.21318388, y: 0.4130541}
-  - {x: 0.21879196, y: 1.0939729}
-  - {x: -0.2239337, y: 1.498637}
-  - {x: 0.08884239, y: 1.0402135}
-  - {x: -0.089738846, y: 0.18529749}
-  - {x: -0.35894942, y: 0.24631464}
-  - {x: -1.1237695, y: 0.24600208}
-  - {x: -1.4659164, y: -0.19594038}
-  - {x: -1.0478144, y: 0.14096254}
-  - {x: -0.12976694, y: -0.045707285}
-  - {x: -0.18878841, y: -0.34085274}
-  - {x: -0.18719149, y: -1.1277299}
-  - {x: 0.20914459, y: -1.4039828}
-  - {x: -0.08382702, y: -1.0235817}
-  - {x: 0.102286816, y: -0.08617413}
-  - {x: 0.44753313, y: -0.1503774}
-  - {x: 1.1302357, y: -0.15341568}
-  - {x: 1.4999828, y: 0.24925888}
---- !u!114 &114338363526797558
+  - {x: 1.4994594, y: 0.2193962}
+  - {x: 1.0616564, y: -0.096971065}
+  - {x: 0.14042756, y: 0.10240165}
+  - {x: 0.2045888, y: 0.4001614}
+  - {x: 0.19300655, y: 1.072485}
+  - {x: -0.19884352, y: 1.4305708}
+  - {x: 0.08884239, y: 0.9886425}
+  - {x: -0.081868, y: 0.13413703}
+  - {x: -0.35501397, y: 0.19908962}
+  - {x: -1.1355758, y: 0.19877703}
+  - {x: -1.4659164, y: -0.2260234}
+  - {x: -1.0564095, y: 0.106581934}
+  - {x: -0.118858576, y: -0.07406912}
+  - {x: -0.18878841, y: -0.36958203}
+  - {x: -0.18308723, y: -1.1605635}
+  - {x: 0.22556135, y: -1.5188999}
+  - {x: -0.08382702, y: -1.0687277}
+  - {x: 0.102286816, y: -0.119007625}
+  - {x: 0.44753313, y: -0.20373188}
+  - {x: 1.1425482, y: -0.18624917}
+  - {x: 1.4982259, y: 0.21788532}
+--- !u!114 &114332894316177828
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1261414238425468}
+  m_GameObject: {fileID: 1894548594175396}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c9d30947ecefa2442936d7800077bf85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   catTag: Cat
-  slaughterAudio: {fileID: 8300000, guid: 339cda5232b60a14d80633ab3261c447, type: 3}
+  slaughterAudio: {fileID: 8300000, guid: 1f9cc79c624f545498e00254f488bde0, type: 3}
 --- !u!114 &114622525471546150
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -183,7 +183,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 7dbf79eb3640bfc4da247c064abc132a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1dd42ebcd6add124c822b6005025a334, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

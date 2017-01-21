@@ -39,11 +39,11 @@ public class GameManagerScript : MonoBehaviour {
         Transform pos_two = spawnPositions[Random.Range(0, 3)];
         if (pos_one != null && pos_two != null) {
             Vector3 direction = pos_one.position - pos_two.position;
-            float randomRange = Random.Range(0, 1);
+            float randomRange = Random.Range(0.0f, 1.0f);
 
-            GameObject obj = Instantiate(catPrefab, pos_one.position + direction * randomRange, Quaternion.identity);
+            GameObject obj = Instantiate(catPrefab, pos_two.position + direction * randomRange, Quaternion.identity);
             CatScript cs = obj.GetComponent<CatScript>();
-            cs.playerNumber = player;
+            cs.AssignPlayer(player);
             cs.score = catWorth;
         } else {
             throw new System.ArgumentException("The postitions (spawn-transfroms) in gamemaneger was not set!");
@@ -58,10 +58,15 @@ public class GameManagerScript : MonoBehaviour {
         if (spawnCats) {
             while (playerOneCats < numberOfCatsPerTeam) {
                 SpawnCat(1);
+                playerOneCats++;
             }
             while (playerTwoCats < numberOfCatsPerTeam) {
                 SpawnCat(2);
+                playerTwoCats++;
             }
+        }
+        if (Input.GetButtonDown("Cancel")) {
+            sceneHandler.LoadMainMenu();
         }
     }
 
@@ -74,9 +79,11 @@ public class GameManagerScript : MonoBehaviour {
 
     public void AddScore(int player, float score) {
         if (player == 1) {
-            playerOneScore += score;
-        } else {
             playerTwoScore += score;
+            playerOneCats--;
+        } else {
+            playerOneScore += score;
+            playerTwoCats--;
         }
         CheckScore();
     }
@@ -115,6 +122,7 @@ public class GameManagerScript : MonoBehaviour {
             }
             gameStarting = false;
             spawnCats = true;
+            gameOver = false;
         }
     }
 
@@ -123,5 +131,11 @@ public class GameManagerScript : MonoBehaviour {
         playerOneScore = 0;
         playerTwoCats = 0;
         playerTwoScore = 0;
+    }
+
+    public void SetStats(float maxScore,int nrCats, int bpm=60) {
+        winScore = maxScore;
+        numberOfCatsPerTeam = nrCats;
+        this.bpm = bpm;
     }
 }
