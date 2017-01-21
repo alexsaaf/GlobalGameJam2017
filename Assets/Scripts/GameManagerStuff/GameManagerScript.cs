@@ -14,8 +14,6 @@ public class GameManagerScript : MonoBehaviour {
     private SceneHandler sceneHandler;
 
     public int bpm = 60;
-    private float timeBetweenBeats;
-    private float timer = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -26,7 +24,6 @@ public class GameManagerScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         CheckScore();
-        
     }
 
     void CheckScore() {
@@ -55,6 +52,5 @@ public class GameManagerScript : MonoBehaviour {
 
     public void UpdateBeat(int bpm) {
         this.bpm = bpm;
-        timeBetweenBeats = 60 / bpm;
     }
 }
