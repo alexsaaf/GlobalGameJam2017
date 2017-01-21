@@ -47,7 +47,7 @@ public class InputManager : IInput {
                         sequenceP1 = "";
                     }
                 } else {
-                    // Player 1 is off beat - send error
+                    ui.IncorrectSequence(playerNumber);
                     sequenceP1 = "";
                 }
                 break;
@@ -60,7 +60,7 @@ public class InputManager : IInput {
                         sequenceP2 = "";
                     }
                 } else {
-                    // Player 2 is off beat - send error
+                    ui.IncorrectSequence(playerNumber);
                     sequenceP2 = "";
                 }
                 break;
