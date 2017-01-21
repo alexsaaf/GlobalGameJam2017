@@ -18,9 +18,8 @@ public class SawBladeScript : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D other){
         if (other.gameObject.CompareTag(catTag)) {
-            // Notify system of collision, perhaps via listener/callback function?
-            // Also, play sound effect and give visual feedback from destruction of game object
-            GameObject.Destroy(other.gameObject);
+            other.GetComponent<CatScript>().OnDeath();
+            // Also, play sound effect and give visual feedback (Saw)
         }
     }
 }
