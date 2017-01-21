@@ -37,7 +37,9 @@ public class Pusher : MonoBehaviour {
 
     public void Activate() {
         StartCoroutine("ActivateIndication");
-        Instantiate(wavePrefab, transform.position, transform.localRotation);
+        BoxCollider2D bc2d = wavePrefab.GetComponent<BoxCollider2D>();
+        Vector3 pos = transform.position + transform.up * (sr.bounds.size.y + bc2d.bounds.size.y);
+        Instantiate(wavePrefab, pos, transform.localRotation);
     }
 
     IEnumerator ActivateIndication() {
