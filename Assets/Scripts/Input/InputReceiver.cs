@@ -13,11 +13,10 @@ public class InputReceiver : MonoBehaviour {
     public bool player1MusicalInput;
     public bool player2MusicalInput;
 
-    public InputManager inputManager;
+    private IInput inputManager = new InputManager();
     
     void Update() {
         if (inputManager != null) {
-
             if (!player1MusicalInput) {
                 receiveInputKeyboard(1);
             } else {
@@ -34,16 +33,16 @@ public class InputReceiver : MonoBehaviour {
     }
 
     void receiveInputKeyboard(int playerNumber) {
-        if (Input.GetAxisRaw("A" + playerNumber.ToString()) != 0) {
+        if (Input.GetButtonDown("A" + playerNumber.ToString())) {
             inputManager.playA(playerNumber);
         }
-        if (Input.GetAxisRaw("E" + playerNumber.ToString()) != 0) {
+        if (Input.GetButtonDown("E" + playerNumber.ToString())) {
             inputManager.playE(playerNumber);
         }
-        if (Input.GetAxisRaw("D" + playerNumber.ToString()) != 0) {
+        if (Input.GetButtonDown("D" + playerNumber.ToString())) {
             inputManager.playD(playerNumber);
         }
-        if (Input.GetAxisRaw("G" + playerNumber.ToString()) != 0) {
+        if (Input.GetButtonDown("G" + playerNumber.ToString())) {
             inputManager.playG(playerNumber);
         }
 
