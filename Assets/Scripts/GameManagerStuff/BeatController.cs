@@ -12,11 +12,14 @@ public class BeatController : MonoBehaviour {
         ui = GameObject.Find("GameUI").GetComponent<UIController>();
         if (ui == null) {
             Debug.Log("UIController was not found in BeatController.Start");
+        } else {
+            Debug.Log("UI is not null!");
         }
         if (bpm != 0) {
             Debug.Log("Set timeBetweenBeats to " + 60 / bpm);
             timeBetweenBeats = 60 / bpm;
-        } 
+        }
+        StartBeat();
 	}
 	
 	void Update () {
@@ -28,8 +31,6 @@ public class BeatController : MonoBehaviour {
                 }
                 timer -= Time.deltaTime;
             }
-        } else {
-            Debug.Log("timeBetweenBeats set to 0 in BeatController");
         }
 	}
 
@@ -38,9 +39,9 @@ public class BeatController : MonoBehaviour {
     }
 
     private void Beat() {
-        // TODO: Notify the UI to blink.
         // Possibly: play beat sound effect
         ui.Beat();
+        Debug.Log("SICK BEAT, YO");
     }
 
     /// <summary>
