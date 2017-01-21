@@ -15,3 +15,4 @@ Mehukatti was made by:
 - [Olle Renius]()
 - [Kevin Larsson Alm]()
 - [Erik Mansén]()
+- Lennie Jansson
