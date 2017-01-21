@@ -38,7 +38,7 @@ public class Pusher : MonoBehaviour {
     public void Activate() {
         StartCoroutine("ActivateIndication");
         SpriteRenderer otherSr = wavePrefab.GetComponent<SpriteRenderer>();
-        Vector3 pos = transform.position + transform.up * (sr.bounds.size.y/2 + otherSr.bounds.size.y/2 + 0.1f);   //0.1f added to handle issues with waves instantly colliding with walls
+        Vector3 pos = transform.position + transform.up * (sr.bounds.size.y/2 + otherSr.bounds.size.y/2 + 0.15f);   //0.1f added to handle issues with waves instantly colliding with walls
 
         Instantiate(wavePrefab, pos, transform.localRotation);
 

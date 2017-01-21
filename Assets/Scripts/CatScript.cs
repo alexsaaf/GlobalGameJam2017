@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CatScript : MonoBehaviour {
 
+    public float score;
     public int playerNumber;
 	
 	// Update is called once per frame
@@ -11,7 +12,7 @@ public class CatScript : MonoBehaviour {
 	}
 
     public void OnDeath () {
-        //GameManager.registerDeathThing
+        GameObject.Find("GameManager").GetComponent<GameManagerScript>().AddScore(playerNumber, score);
         GameObject.Destroy(gameObject);
     }
 }
