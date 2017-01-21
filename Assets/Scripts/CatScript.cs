@@ -33,4 +33,14 @@ public class CatScript : MonoBehaviour {
         GameObject.Find("GameManager").GetComponent<GameManagerScript>().AddScore(playerNumber, score);
         GameObject.Destroy(gameObject);
     }
+
+    public void AssignPlayer(int playerNumber) {
+        this.playerNumber = playerNumber;
+        SpriteRenderer renderer = (SpriteRenderer)GetComponent("SpriteRenderer");
+        if (playerNumber == 0) {
+            renderer.sprite = pearSprite;
+        } else {
+            renderer.sprite = raspSprite;
+        }
+    }
 }
