@@ -11,11 +11,25 @@ public class InputManager : IInput {
     // natural place to define these.
     public Color colorP1, colorP2;
     private string sequenceP1 = "", sequenceP2 = "";
-    private float beatMargin = 0.5f;
+    private float beatMargin;
     private UIController ui;
+    private BeatController beatController;
+    private bool hitToneP1, hitToneP2;
+    private bool toneStreakP1, toneStreakP2;
+    private bool count;
+    private float timer;
 
     public InputManager(UIController ui) {
         this.ui = ui;
+        beatController = GameObject.Find("GameManager").GetComponent<BeatController>();
+        if (beatController == null) {
+            Debug.Log("BeatController is null in InputManager constructor");
+        } else {
+            // This value is just a small part of the total time, modify the divider if needed;
+            beatMargin = beatController.GetTimeBetweenBeats() / 5f;
+            //beatMargin = 0.2f;
+            Debug.Log("Margin: " + beatMargin);
+        }
     }
 	
     public void playA(int playerNumber) {
@@ -34,12 +48,13 @@ public class InputManager : IInput {
         addToneToSequence("G", playerNumber);
     }
 
-    private void addToneToSequence(string tone, int playerNumber) { 
-        // TODO: Call UIController to update UI for each successful tone
-
+    private void addToneToSequence(string tone, int playerNumber) {
         switch(playerNumber) {
             case 1:
                 if (GetTimeToBeat() <= beatMargin) {
+                    toneStreakP1 = true;
+                    Debug.Log("HYES!");
+                    hitToneP1 = true;
                     sequenceP1 += tone;
                     ui.UpdatePlayerSequence(playerNumber, sequenceP1);
                     if (sequenceP1.Length == 4) {
@@ -53,6 +68,8 @@ public class InputManager : IInput {
                 break;
             case 2:
                 if (GetTimeToBeat() <= beatMargin) {
+                    toneStreakP1 = true;
+                    hitToneP1 = true;
                     sequenceP2 += tone;
                     ui.UpdatePlayerSequence(playerNumber, sequenceP2);
                     if (sequenceP2.Length == 4) {
@@ -70,12 +87,31 @@ public class InputManager : IInput {
         }
     }
 
-    // Placeholder function that returns how long time the closest beat is.
+    // Returns the closest beat.
     // This means that it should return the time SINCE the last beat or the time UNTIL
     // the next beat, depending on which one is nearest.
-    // TODO: Implement this function once the GameManager actually keeps a beat.
     private float GetTimeToBeat() {
-        return 0f;
+        return beatController.TimeToBeat();
+    }
+
+    public void Beat() {
+        count = true;
+        timer = 0;
+    }
+
+    public void Update() {
+        if (count) {
+            timer += Time.deltaTime;
+            if (timer >= beatMargin) {
+                if (!hitToneP1 && toneStreakP1) {
+                    // Player 1 had a tone streak but failed!
+                }
+                if (!hitToneP2 && toneStreakP2) {
+                    // Player 2 had a tone streak but failed!
+                }
+                count = false;
+            }
+        }
     }
     
 }

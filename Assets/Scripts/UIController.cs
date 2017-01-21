@@ -89,7 +89,7 @@ public class UIController : MonoBehaviour {
 
         public void UpdateSequence(string sequence) {
             char[] characters = sequence.ToCharArray();
-            AssignSymbol(symbol1, characters[0]);
+            AssignSymbol(symbol1, (characters.Length > 0) ? characters[0] : ' ');
             AssignSymbol(symbol2, (characters.Length > 1) ? characters[1] : ' ');
             AssignSymbol(symbol3, (characters.Length > 2) ? characters[2] : ' ');
             AssignSymbol(symbol4, (characters.Length > 3) ? characters[3] : ' ');
@@ -115,7 +115,8 @@ public class UIController : MonoBehaviour {
         }
 
         public void Error() {
-
+            //TODO: Play fail sound effect. Maybe visual feedback as well.
+            UpdateSequence("");
         }
     }
 

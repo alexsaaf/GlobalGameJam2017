@@ -15,8 +15,8 @@ public class InputReceiver : MonoBehaviour {
 
     public UIController ui;
 
-    private IInput inputManager;
-
+    private InputManager inputManager;
+    
     void Start() {
         inputManager = new InputManager(ui);
     }
@@ -34,7 +34,8 @@ public class InputReceiver : MonoBehaviour {
                 receiveInputMusical(2);
             }
         } else {
-            Debug.Log("inputManager is null in InputReveiver.Update()");
+            Debug.Log("inputManager is null in InputReceiver.Update()");
+            inputManager.Update();
         }
     }
 
@@ -55,5 +56,9 @@ public class InputReceiver : MonoBehaviour {
 
     void receiveInputMusical(int playerNumber) {
         Debug.Log("Musical input not implemented yet");
+    }
+
+    public void Beat() {
+        inputManager.Beat();
     }
 }

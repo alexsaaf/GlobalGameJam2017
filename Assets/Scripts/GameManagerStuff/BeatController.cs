@@ -7,20 +7,26 @@ public class BeatController : MonoBehaviour {
     private float timer;
     private bool isBeating;
     private UIController ui;
+    private InputReceiver receiver;
+
+    void Awake() {
+        if (bpm != 0) {
+            timeBetweenBeats = 60f / bpm;
+        }
+    }
 
 	void Start () {
         ui = GameObject.Find("GameUI").GetComponent<UIController>();
         if (ui == null) {
             Debug.Log("UIController was not found in BeatController.Start");
-        } else {
-            Debug.Log("UI is not null!");
         }
-        if (bpm != 0) {
-            Debug.Log("Set timeBetweenBeats to " + 60 / bpm);
-            timeBetweenBeats = 60 / bpm;
-        }
+        receiver = GetComponentInParent<InputReceiver>();
         StartBeat();
 	}
+
+    void LateStart() {
+
+    }
 	
 	void Update () {
         if (timeBetweenBeats != 0) {
@@ -41,7 +47,7 @@ public class BeatController : MonoBehaviour {
     private void Beat() {
         // Possibly: play beat sound effect
         ui.Beat();
-        Debug.Log("SICK BEAT, YO");
+        receiver.Beat();
     }
 
     /// <summary>
@@ -50,5 +56,9 @@ public class BeatController : MonoBehaviour {
     /// </summary>
     public float TimeToBeat() {
         return Mathf.Min(timer, timeBetweenBeats - timer);
+    }
+
+    public float GetTimeBetweenBeats() {
+        return timeBetweenBeats;
     }
 }
