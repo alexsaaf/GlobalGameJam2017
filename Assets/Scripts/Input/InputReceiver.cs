@@ -13,7 +13,13 @@ public class InputReceiver : MonoBehaviour {
     public bool player1MusicalInput;
     public bool player2MusicalInput;
 
-    private IInput inputManager = new InputManager();
+    public UIController ui;
+
+    private IInput inputManager;
+
+    void Start() {
+        inputManager = new InputManager(ui);
+    }
     
     void Update() {
         if (inputManager != null) {

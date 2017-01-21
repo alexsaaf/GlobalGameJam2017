@@ -1,5 +1,10 @@
 ﻿using UnityEngine;
 
+/// <summary>
+/// This class is used to manage the input received by the players during the game.
+/// It keeps track of how close they are to the beat and sends successful/unsuccessful
+/// inputs to UIController and PusherHandler.
+/// </summary>
 public class InputManager : IInput {
 
     // TODO: Set colors, somewhere. InputManager does not feel like the
@@ -7,6 +12,11 @@ public class InputManager : IInput {
     public Color colorP1, colorP2;
     private string sequenceP1 = "", sequenceP2 = "";
     private float beatMargin = 0.5f;
+    private UIController ui;
+
+    public InputManager(UIController ui) {
+        this.ui = ui;
+    }
 	
     public void playA(int playerNumber) {
         addToneToSequence("A", playerNumber);
@@ -28,10 +38,10 @@ public class InputManager : IInput {
         // TODO: Call UIController to update UI for each successful tone
 
         switch(playerNumber) {
-
             case 1:
                 if (GetTimeToBeat() <= beatMargin) {
                     sequenceP1 += tone;
+                    ui.UpdatePlayerSequence(playerNumber, sequenceP1);
                     if (sequenceP1.Length == 4) {
                         PusherHandler.instance.ActivatePusher(sequenceP1, colorP1);
                         sequenceP1 = "";
@@ -44,6 +54,7 @@ public class InputManager : IInput {
             case 2:
                 if (GetTimeToBeat() <= beatMargin) {
                     sequenceP2 += tone;
+                    ui.UpdatePlayerSequence(playerNumber, sequenceP2);
                     if (sequenceP2.Length == 4) {
                         PusherHandler.instance.ActivatePusher(sequenceP2, colorP2);
                         sequenceP2 = "";
