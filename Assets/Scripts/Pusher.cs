@@ -26,11 +26,10 @@ public class Pusher : MonoBehaviour {
         sr = GetComponent<SpriteRenderer>();
         standardColor = sr.color;
 	}
-	
+
     public void ActivateIdentity(string idToActivate, Color playerColor) {
 
         if(idToActivate.Equals(identity)) {
-            Debug.Log("Activating");
             activatedColor = playerColor;
             Activate();
         }
