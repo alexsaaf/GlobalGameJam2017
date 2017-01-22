@@ -11,6 +11,9 @@ public class CatScript : MonoBehaviour {
     public AudioClip meow1;
     public AudioClip meow2;
     public AudioClip meow3;
+    public AudioClip willhelmCat;
+    public AudioClip willhelmScream;
+    public float willhelmChance;
     public float minMeowCooldown;
     public float maxMeowCooldown;
     private float meowTimer = 0;
@@ -55,6 +58,15 @@ public class CatScript : MonoBehaviour {
             GameObject obj = Instantiate(particleEffectPrefab, transform.position, transform.localRotation);
             obj.GetComponent<ParticleSystemRenderer>().material = raspDeathParticles;
             obj.GetComponent<ParticleSystem>().Play();
+        }
+        if(willhelmCat != null && willhelmScream != null) {
+            if(Random.Range(0f, 1f) <= willhelmChance) {
+                AudioSource.PlayClipAtPoint(willhelmScream, transform.position);
+            } else {
+                AudioSource.PlayClipAtPoint(willhelmCat, transform.position);
+            }
+        } else {
+            Debug.Log("AAAAAAAAH, add death scream files to cat");
         }
 		Destroy(gameObject);
     }
