@@ -1,10 +1,18 @@
 fileFormatVersion: 2
 guid: 17bf64734807eb741a36a70bd7cad590
-timeCreated: 1484999026
+timeCreated: 1485071744
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - meow1: {fileID: 8300000, guid: 5f70f1e799024514bab4d2f7f0eb1aa3, type: 3}
+  - meow2: {fileID: 8300000, guid: 7c2bfdcf311e3c2438793ba3ab2d8b51, type: 3}
+  - pearSprite: {fileID: 21300000, guid: 6548890503160a1459c955e7f44db31b, type: 3}
+  - raspSprite: {fileID: 21300000, guid: 3ec70733b73f52d42a59c8ceff686d60, type: 3}
+  - pearDeathParticles: {fileID: 2100000, guid: f1deac2942820244e9f5f53f372ce363,
+      type: 2}
+  - raspDeathParticles: {fileID: 2100000, guid: 5c6fb47bda1d59d4893dd78129723964,
+      type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

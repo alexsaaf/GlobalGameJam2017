@@ -14,10 +14,8 @@ public class SawBladeScript : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D other){
         if (other.gameObject.CompareTag(catTag)) {
-            other.GetComponent<CatScript>().OnDeath();
+			other.gameObject.GetComponent<CatScript>().OnDeath();
             AudioSource.PlayClipAtPoint(slaughterAudio, sawBlade.position);
-            // Also, play sound effect and give visual feedback (Saw)
-
         }
     }
 }

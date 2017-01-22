@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(SpriteRenderer))]
+[RequireComponent(typeof(ParticleSystem))]
 public class CatScript : MonoBehaviour {
 
     public float score;
@@ -13,7 +15,10 @@ public class CatScript : MonoBehaviour {
     private float meowTimer = 0;
     public Sprite pearSprite;
     public Sprite raspSprite;
-	
+	public Material pearDeathParticles;
+	public Material raspDeathParticles;
+	public ParticleSystem particleEffectPrefab;
+
 	// Update is called once per frame
 	void Update () {
         if(meowTimer <= 0) {
@@ -35,13 +40,13 @@ public class CatScript : MonoBehaviour {
 
     public void OnDeath () {
         GameObject.Find("GameManager").GetComponent<GameManagerScript>().AddScore(playerNumber, score);
-        Destroy(gameObject);
+		Destroy(gameObject);
     }
 
     public void AssignPlayer(int playerNumber) {
         this.playerNumber = playerNumber;
         SpriteRenderer renderer = (SpriteRenderer)GetComponent("SpriteRenderer");
-        if (playerNumber == 0) {
+        if (playerNumber == 0) { 
             renderer.sprite = pearSprite;
         } else {
             renderer.sprite = raspSprite;
