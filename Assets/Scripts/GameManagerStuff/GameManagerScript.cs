@@ -31,8 +31,11 @@ public class GameManagerScript : MonoBehaviour {
     public bool spawnCats = false;
     public bool gameStarting = false;
 
-	// Use this for initialization
-	void Start () {
+    public AudioClip countdownSound;
+    public MusicManager musicManager;
+
+    // Use this for initialization
+    void Start () {
         sceneHandler = GetComponent<SceneHandler>();
         SceneManager.sceneLoaded += OnSceneLoaded;
 	}
@@ -127,7 +130,33 @@ public class GameManagerScript : MonoBehaviour {
             gameStarting = false;
             spawnCats = true;
             gameOver = false;
+            //Play countdown and proceed with game!
+            AudioSource.PlayClipAtPoint(countdownSound, transform.position);
+            Invoke("StartGame", 2.038f);
         }
+    }
+
+    void StartGame()
+    {
+        // Set difficulty based on bpm!
+        switch (bpm)
+        {
+            case 90:
+                musicManager.SetEasy();
+                break;
+            case 120:
+                musicManager.SetEasy();
+                break;
+            case 160:
+                musicManager.SetEasy();
+                break;
+            default:
+                musicManager.SetHard();
+                break;
+        }
+        // Start Beat and music!
+
+        musicManager.Play();
     }
 
     public void ResetStats() {
