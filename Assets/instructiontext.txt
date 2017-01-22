@@ -3,9 +3,9 @@
 - MEEOW!
 [Help!]
 
-Save your cat flavour from the mixer!
+Produce the most cat juice of your flavour!
 
-Rythmically splash your cat flavour away from the mixer.
+Rythmically splash your cat flavour the juice mixer. 
 
 Select where to splash by pressing Y, X, A or B on the controller.
 
@@ -14,4 +14,4 @@ The combination of four directions determines the angle of the splash wave.
 Attention!
 Play to the beat! The buttons must be pressed in rythm. Also, two opposing angles cancels each other out and gives invalid input.
 
-Keep a meow on the cat juice level, last cat standing will not be shipped out in juicy bottles!
+Keep a meow on the cat juice level, the winner will be shipped out in juicy bottles!
