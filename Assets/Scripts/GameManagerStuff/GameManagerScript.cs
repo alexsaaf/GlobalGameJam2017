@@ -144,4 +144,11 @@ public class GameManagerScript : MonoBehaviour {
         this.bpm = bpm;
         Debug.Log(winScore + " " + numberOfCatsPerTeam + " " + bpm);
     }
+
+    public int GetWinner() {
+        if (playerOneScore < playerTwoScore) {
+            return 2;
+        }
+        return 1;
+    }
 }
