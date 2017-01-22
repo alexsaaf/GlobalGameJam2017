@@ -8,10 +8,10 @@ public class InputReceiver : MonoBehaviour {
 
     /*
      * These bools are used to determine wether the respective players use
-     * keyboard or musical input.
+     * keyboard or controller.
      */
-    public bool player1MusicalInput;
-    public bool player2MusicalInput;
+    public bool player1Controller;
+    public bool player2Controller;
 
     public UIController ui;
 
@@ -23,20 +23,20 @@ public class InputReceiver : MonoBehaviour {
     
     void Update() {
         if (inputManager != null) {
-            if (!player1MusicalInput) {
+            if (!player1Controller) {
                 receiveInputKeyboard(1);
             } else {
-                receiveInputMusical(1);
+                receiveInputController(1);
             }
-            if (!player2MusicalInput) {
+            if (!player2Controller) {
                 receiveInputKeyboard(2);
             } else {
-                receiveInputMusical(2);
+                receiveInputController(2);
             }
         } else {
             Debug.Log("inputManager is null in InputReceiver.Update()");
-            inputManager.Update();
         }
+        inputManager.Update();
     }
 
     void receiveInputKeyboard(int playerNumber) {
@@ -54,8 +54,8 @@ public class InputReceiver : MonoBehaviour {
         }
     }
 
-    void receiveInputMusical(int playerNumber) {
-        Debug.Log("Musical input not implemented yet");
+    void receiveInputController(int playerNumber) {
+        Debug.Log("Controller input not implemented yet");
     }
 
     public void Beat() {
