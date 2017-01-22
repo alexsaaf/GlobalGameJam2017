@@ -18,7 +18,7 @@ public class InputReceiver : MonoBehaviour {
     private InputManager inputManager;
     
     void Start() {
-        inputManager = new InputManager(ui);
+        inputManager = new InputManager(ui, GetComponentInParent<BeatController>());
     }
     
     void Update() {
