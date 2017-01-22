@@ -4,6 +4,7 @@
 /// The idea is that this class will collect input from the players.
 /// It checks whether each player uses musical or standard keyboard input.
 /// </summary>
+[RequireComponent(typeof(BeatController))]
 public class InputReceiver : MonoBehaviour {
 
     /*
@@ -18,7 +19,9 @@ public class InputReceiver : MonoBehaviour {
     private InputManager inputManager;
     
     void Start() {
-        inputManager = new InputManager(ui, GetComponent<BeatController>());
+        BeatController bc = GetComponent<BeatController>();
+        Debug.Log(bc == null);
+        inputManager = new InputManager(ui, bc);
     }
     
     void Update() {
