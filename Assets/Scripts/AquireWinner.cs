@@ -12,6 +12,6 @@ public class AquireWinner : MonoBehaviour {
 	void Start () {
         MGS = GameObject.Find("GameManager").GetComponent<GameManagerScript>();
         winnerText = GetComponent<Text>();
-        winnerText.text = winnerText.text + MGS.GetWinner();
+        winnerText.text = winnerText.text + " " + MGS.GetWinner();
 	}
 }

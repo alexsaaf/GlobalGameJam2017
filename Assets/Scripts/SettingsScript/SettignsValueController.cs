@@ -13,9 +13,9 @@ public class SettignsValueController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        kittensPerPLayer = transform.FindChild("LitterSizeInputField").GetComponent<InputField>();
-        litersToWin = transform.FindChild("LitersInputField").GetComponent<InputField>();
-        difficulty = transform.FindChild("Dropdown").GetComponent<Dropdown>();
+        kittensPerPLayer = transform.FindChild("SettingsPanel").FindChild("LitterSizeInputField").GetComponent<InputField>();
+        litersToWin = transform.FindChild("SettingsPanel").FindChild("LitersInputField").GetComponent<InputField>();
+        difficulty = transform.FindChild("SettingsPanel").FindChild("Dropdown").GetComponent<Dropdown>();
         GameObject GM = GameObject.Find("GameManager");
         GMS = GM.GetComponent<GameManagerScript>();
         SH = GM.GetComponent<SceneHandler>();
