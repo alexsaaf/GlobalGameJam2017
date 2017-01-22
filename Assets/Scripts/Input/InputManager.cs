@@ -19,6 +19,8 @@ public class InputManager : IInput {
     private bool count;
     private float timer;
 
+    private float calibration = 0.15f; 
+
     public InputManager(UIController ui, BeatController beatController) {
         this.ui = ui;
         this.beatController = beatController;
@@ -26,7 +28,7 @@ public class InputManager : IInput {
             Debug.Log("BeatController is null in InputManager constructor");
         } else {
             // This value is just a small part of the total time, modify the divider if needed;
-            beatMargin = beatController.GetTimeBetweenBeats() / 5f;
+            beatMargin = beatController.GetTimeBetweenBeats() / 8f;
             Debug.Log("Margin: " + beatMargin);
         }
     }
@@ -65,6 +67,7 @@ public class InputManager : IInput {
                 }
                 break;
             case 2:
+                Debug.Log("Time to beat: " + (GetTimeToBeat()));
                 if (GetTimeToBeat() <= beatMargin) {
                     toneStreakP2 = true;
                     hitToneP2 = true;

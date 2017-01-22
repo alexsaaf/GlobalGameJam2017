@@ -8,6 +8,7 @@ public class BeatController : MonoBehaviour {
     private bool isBeating;
     private UIController ui;
     private InputReceiver receiver;
+    public AudioClip beatClip;
 
     void Awake() {
         if (bpm != 0) {
@@ -23,10 +24,6 @@ public class BeatController : MonoBehaviour {
         receiver = GetComponentInParent<InputReceiver>();
         StartBeat();
 	}
-
-    void LateStart() {
-
-    }
 	
 	void Update () {
         if (timeBetweenBeats != 0) {
@@ -45,7 +42,7 @@ public class BeatController : MonoBehaviour {
     }
 
     private void Beat() {
-        // Possibly: play beat sound effect
+        AudioSource.PlayClipAtPoint(beatClip, transform.position);
         ui.Beat();
         receiver.Beat();
     }

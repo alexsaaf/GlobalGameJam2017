@@ -3834,6 +3834,16 @@ Prefab:
       propertyPath: ui
       value: 
       objectReference: {fileID: 1788347685}
+    - target: {fileID: 114914931202671276, guid: 19f9b788fc67f4a49ac963251bd69e0a,
+        type: 2}
+      propertyPath: beatClip
+      value: 
+      objectReference: {fileID: 8300000, guid: c1859271c9a823a48bbb6cfcd8be7c2e, type: 3}
+    - target: {fileID: 114914931202671276, guid: 19f9b788fc67f4a49ac963251bd69e0a,
+        type: 2}
+      propertyPath: bpm
+      value: 120
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 19f9b788fc67f4a49ac963251bd69e0a, type: 2}
   m_IsPrefabParent: 0
@@ -5719,9 +5729,14 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114485338458153196, guid: f37f17baadae3f344870e597c5dcac86,
         type: 2}
-      propertyPath: score
-      value: 10
-      objectReference: {fileID: 0}
+      propertyPath: meow1
+      value: 
+      objectReference: {fileID: 8300000, guid: cd2d3e823d750f0449fbf79a19cbeb87, type: 3}
+    - target: {fileID: 114485338458153196, guid: f37f17baadae3f344870e597c5dcac86,
+        type: 2}
+      propertyPath: meow2
+      value: 
+      objectReference: {fileID: 8300000, guid: 70266201457ecff49ab8b6df14d545ee, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f37f17baadae3f344870e597c5dcac86, type: 2}
   m_IsPrefabParent: 0

@@ -18,6 +18,7 @@ public class InputReceiver : MonoBehaviour {
     private InputManager inputManager;
     
     void Start() {
+        //Color colorP1 = GameObject.Find("GameManager").GetComponent<GameManagerScript>().player1Color;
         inputManager = new InputManager(ui, GetComponent<BeatController>());
     }
     
