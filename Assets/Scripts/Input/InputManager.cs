@@ -19,9 +19,9 @@ public class InputManager : IInput {
     private bool count;
     private float timer;
 
-    public InputManager(UIController ui) {
+    public InputManager(UIController ui, BeatController beatController) {
         this.ui = ui;
-        beatController = GameObject.Find("GameManager").GetComponent<BeatController>();
+        this.beatController = beatController;
         if (beatController == null) {
             Debug.Log("BeatController is null in InputManager constructor");
         } else {
