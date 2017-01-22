@@ -4,6 +4,7 @@
 /// The idea is that this class will collect input from the players.
 /// It checks whether each player uses musical or standard keyboard input.
 /// </summary>
+[RequireComponent(typeof(BeatController))]
 public class InputReceiver : MonoBehaviour {
 
     /*
