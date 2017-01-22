@@ -17,11 +17,20 @@ public class InputReceiver : MonoBehaviour {
     public UIController ui;
 
     private InputManager inputManager;
-    
+
+    public AudioClip A1, E1, D1, G1, A2, E2, D2, G2;
+
     void Start() {
-        BeatController bc = GetComponent<BeatController>();
-        Debug.Log(bc == null);
-        inputManager = new InputManager(ui, bc);
+        GameManagerScript gms = GameObject.Find("GameManager").GetComponent<GameManagerScript>();
+        Color colorP1 = Color.red, colorP2 = Color.blue;
+        if (gms != null) {
+            //colorP1 = gms.player1Color;
+            //colorP2 = gms.player2Color;
+        } else {
+            Debug.Log("Game manager script not found in InputReceiver.Start()");
+        }
+        inputManager = new InputManager(ui, GetComponent<BeatController>(), colorP1, colorP2,
+            A1, E1, D1, G1, A2, E2, D2, G2);
     }
     
     void Update() {

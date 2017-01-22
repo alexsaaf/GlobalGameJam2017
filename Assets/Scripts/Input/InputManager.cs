@@ -9,7 +9,7 @@ public class InputManager : IInput {
 
     // TODO: Set colors, somewhere. InputManager does not feel like the
     // natural place to define these.
-    public Color colorP1, colorP2;
+    private Color colorP1, colorP2;
     private string sequenceP1 = "", sequenceP2 = "";
     private float beatMargin;
     private UIController ui;
@@ -19,16 +19,31 @@ public class InputManager : IInput {
     private bool count;
     private float timer;
 
-    public InputManager(UIController ui, BeatController beatController) {
+    private float calibration;
+
+    private AudioClip A1, E1, D1, G1, A2, E2, D2, G2;
+
+    public InputManager(UIController ui, BeatController beatController, Color colorP1, Color colorP2, 
+        AudioClip A1, AudioClip E1, AudioClip D1, AudioClip G1, AudioClip A2, AudioClip E2, AudioClip D2, AudioClip G2) {
         this.ui = ui;
         this.beatController = beatController;
         if (beatController == null) {
             Debug.Log("BeatController is null in InputManager constructor");
         } else {
-            // This value is just a small part of the total time, modify the divider if needed;
-            beatMargin = beatController.GetTimeBetweenBeats() / 5f;
-            Debug.Log("Margin: " + beatMargin);
+            // This value is just a small part of the total time, modify the divider if needed.
+            beatMargin = beatController.GetTimeBetweenBeats() / 20f;
+            calibration = beatMargin * 2f;
         }
+        this.colorP1 = colorP1;
+        this.colorP2 = colorP2;
+        this.A1 = A1;
+        this.E1 = E1;
+        this.D1 = D1;
+        this.G1 = G1;
+        this.A2 = A2;
+        this.E2 = E2;
+        this.D2 = D2;
+        this.G2 = G2;
     }
 	
     public void playA(int playerNumber) {
@@ -48,35 +63,106 @@ public class InputManager : IInput {
     }
 
     private void addToneToSequence(string tone, int playerNumber) {
-        switch(playerNumber) {
+        float timeToBeat = GetTimeToBeat();
+        float absoluteTimeToBeat = Mathf.Abs(timeToBeat);
+        AudioClip clipToPlay;
+        switch (playerNumber) {
             case 1:
-                if (GetTimeToBeat() <= beatMargin) {
-                    toneStreakP1 = true;
-                    hitToneP1 = true;
-                    sequenceP1 += tone;
-                    ui.UpdatePlayerSequence(playerNumber, sequenceP1);
-                    if (sequenceP1.Length == 4) {
-                        PusherHandler.instance.ActivatePusher(sequenceP1, colorP1);
-                        sequenceP1 = "";
+                switch(tone) {
+                    case "A":
+                        clipToPlay = A1;
+                        break;
+                    case "E":
+                        clipToPlay = E1;
+                        break;
+                    case "D":
+                        clipToPlay = D1;
+                        break;
+                    case "G":
+                        clipToPlay = G1;
+                        break;
+                    default:
+                        clipToPlay = A1;
+                        break;
+                }
+                AudioSource.PlayClipAtPoint(clipToPlay, new Vector3(0, 0, 0));
+                if (timeToBeat < 0) { // The player hit BEFORE a beat
+                    if (timeToBeat + calibration * 4 * beatMargin <= beatMargin) {
+                        toneStreakP1 = true;
+                        hitToneP1 = true;
+                        sequenceP1 += tone;
+                        ui.UpdatePlayerSequence(playerNumber, sequenceP1);
+                        if (sequenceP1.Length == 4) {
+                            PusherHandler.instance.ActivatePusher(sequenceP1, colorP1);
+                            sequenceP1 = "";
+                        }
+                    } else {
+                        MissedTone(playerNumber, ref sequenceP1);
+                        toneStreakP1 = false;
                     }
-                } else {
-                    MissedTone(playerNumber, ref sequenceP1);
-                    toneStreakP1 = false;
+                } else { // The player hit AFTER a beat
+                    if (absoluteTimeToBeat - calibration * 7 * beatMargin <= beatMargin) {
+                        toneStreakP1 = true;
+                        hitToneP1 = true;
+                        sequenceP1 += tone;
+                        ui.UpdatePlayerSequence(playerNumber, sequenceP1);
+                        if (sequenceP1.Length == 4) {
+                            PusherHandler.instance.ActivatePusher(sequenceP1, colorP1);
+                            sequenceP1 = "";
+                        }
+                    } else {
+                        MissedTone(playerNumber, ref sequenceP1);
+                        toneStreakP1 = false;
+                    }
                 }
                 break;
             case 2:
-                if (GetTimeToBeat() <= beatMargin) {
-                    toneStreakP2 = true;
-                    hitToneP2 = true;
-                    sequenceP2 += tone;
-                    ui.UpdatePlayerSequence(playerNumber, sequenceP2);
-                    if (sequenceP2.Length == 4) {
-                        PusherHandler.instance.ActivatePusher(sequenceP2, colorP2);
-                        sequenceP2 = "";
+                switch (tone) {
+                    case "A":
+                        clipToPlay = A2;
+                        break;
+                    case "E":
+                        clipToPlay = E2;
+                        break;
+                    case "D":
+                        clipToPlay = D2;
+                        break;
+                    case "G":
+                        clipToPlay = G2;
+                        break;
+                    default:
+                        clipToPlay = A2;
+                        break;
+                }
+                AudioSource.PlayClipAtPoint(clipToPlay, new Vector3(0, 0, 0));
+                if (timeToBeat < 0) { // The player hit BEFORE a beat
+                    if (timeToBeat + calibration * 4 * beatMargin <= beatMargin) {
+                        toneStreakP2 = true;
+                        hitToneP2 = true;
+                        sequenceP2 += tone;
+                        ui.UpdatePlayerSequence(playerNumber, sequenceP2);
+                        if (sequenceP2.Length == 4) {
+                            PusherHandler.instance.ActivatePusher(sequenceP2, colorP2);
+                            sequenceP2 = "";
+                        }
+                    } else {
+                        MissedTone(playerNumber, ref sequenceP2);
+                        toneStreakP2 = false;
                     }
-                } else {
-                    MissedTone(playerNumber, ref sequenceP2);
-                    toneStreakP2 = false;
+                } else { // The player hit AFTER a beat
+                    if (absoluteTimeToBeat - calibration * 7 * beatMargin <= beatMargin) {
+                        toneStreakP2 = true;
+                        hitToneP2 = true;
+                        sequenceP2 += tone;
+                        ui.UpdatePlayerSequence(playerNumber, sequenceP2);
+                        if (sequenceP2.Length == 4) {
+                            PusherHandler.instance.ActivatePusher(sequenceP2, colorP2);
+                            sequenceP2 = "";
+                        }
+                    } else {
+                        MissedTone(playerNumber, ref sequenceP2);
+                        toneStreakP2 = false;
+                    }
                 }
                 break;
             default:
