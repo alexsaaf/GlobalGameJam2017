@@ -10,8 +10,8 @@ public class CatScript : MonoBehaviour {
     public int playerNumber;
     public AudioClip meow1;
     public AudioClip meow2;
-    public int minMeowCooldown;
-    public int maxMeowCooldown;
+    public float minMeowCooldown;
+    public float maxMeowCooldown;
     private float meowTimer = 0;
     public Sprite pearSprite;
     public Sprite raspSprite;
@@ -54,8 +54,8 @@ public class CatScript : MonoBehaviour {
 
     public void AssignPlayer(int playerNumber) {
         this.playerNumber = playerNumber;
-        SpriteRenderer renderer = (SpriteRenderer)GetComponent("SpriteRenderer");
-        if (playerNumber == 0) { 
+        SpriteRenderer renderer = GetComponent<SpriteRenderer>();
+        if (playerNumber == 1) { 
             renderer.sprite = pearSprite;
         } else {
             renderer.sprite = raspSprite;
