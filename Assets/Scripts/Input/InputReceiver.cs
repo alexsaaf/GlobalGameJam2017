@@ -35,8 +35,8 @@ public class InputReceiver : MonoBehaviour {
             }
         } else {
             Debug.Log("inputManager is null in InputReceiver.Update()");
-            inputManager.Update();
         }
+        inputManager.Update();
     }
 
     void receiveInputKeyboard(int playerNumber) {

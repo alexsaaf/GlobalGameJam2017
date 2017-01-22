@@ -27,7 +27,6 @@ public class InputManager : IInput {
         } else {
             // This value is just a small part of the total time, modify the divider if needed;
             beatMargin = beatController.GetTimeBetweenBeats() / 5f;
-            //beatMargin = 0.2f;
             Debug.Log("Margin: " + beatMargin);
         }
     }
@@ -53,7 +52,6 @@ public class InputManager : IInput {
             case 1:
                 if (GetTimeToBeat() <= beatMargin) {
                     toneStreakP1 = true;
-                    Debug.Log("HYES!");
                     hitToneP1 = true;
                     sequenceP1 += tone;
                     ui.UpdatePlayerSequence(playerNumber, sequenceP1);
@@ -62,14 +60,14 @@ public class InputManager : IInput {
                         sequenceP1 = "";
                     }
                 } else {
-                    ui.IncorrectSequence(playerNumber);
-                    sequenceP1 = "";
+                    MissedTone(playerNumber, ref sequenceP1);
+                    toneStreakP1 = false;
                 }
                 break;
             case 2:
                 if (GetTimeToBeat() <= beatMargin) {
-                    toneStreakP1 = true;
-                    hitToneP1 = true;
+                    toneStreakP2 = true;
+                    hitToneP2 = true;
                     sequenceP2 += tone;
                     ui.UpdatePlayerSequence(playerNumber, sequenceP2);
                     if (sequenceP2.Length == 4) {
@@ -77,8 +75,8 @@ public class InputManager : IInput {
                         sequenceP2 = "";
                     }
                 } else {
-                    ui.IncorrectSequence(playerNumber);
-                    sequenceP2 = "";
+                    MissedTone(playerNumber, ref sequenceP2);
+                    toneStreakP2 = false;
                 }
                 break;
             default:
@@ -104,14 +102,23 @@ public class InputManager : IInput {
             timer += Time.deltaTime;
             if (timer >= beatMargin) {
                 if (!hitToneP1 && toneStreakP1) {
-                    // Player 1 had a tone streak but failed!
+                    toneStreakP1 = false;
+                    MissedTone(1, ref sequenceP1); 
                 }
                 if (!hitToneP2 && toneStreakP2) {
-                    // Player 2 had a tone streak but failed!
+                    toneStreakP2 = false;
+                    MissedTone(2, ref sequenceP2);
                 }
                 count = false;
+                hitToneP1 = false;
+                hitToneP2 = false;
             }
         }
+    }
+
+    private void MissedTone(int playerNumber, ref string sequence) {
+        ui.IncorrectSequence(playerNumber);
+        sequence = "";
     }
     
 }
