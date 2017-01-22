@@ -17,7 +17,7 @@ public class CatScript : MonoBehaviour {
     public Sprite raspSprite;
 	public Material pearDeathParticles;
 	public Material raspDeathParticles;
-	public ParticleSystem particleEffectPrefab;
+	public GameObject particleEffectPrefab;
 
 	// Update is called once per frame
 	void Update () {
@@ -40,6 +40,15 @@ public class CatScript : MonoBehaviour {
 
     public void OnDeath () {
         GameObject.Find("GameManager").GetComponent<GameManagerScript>().AddScore(playerNumber, score);
+        if (playerNumber == 1) {
+            GameObject obj = Instantiate(particleEffectPrefab, transform.position, transform.localRotation);
+            obj.GetComponent<ParticleSystemRenderer>().material = pearDeathParticles;
+            obj.GetComponent<ParticleSystem>().Play();
+        } else {
+            GameObject obj = Instantiate(particleEffectPrefab, transform.position, transform.localRotation);
+            obj.GetComponent<ParticleSystemRenderer>().material = raspDeathParticles;
+            obj.GetComponent<ParticleSystem>().Play();
+        }
 		Destroy(gameObject);
     }
 

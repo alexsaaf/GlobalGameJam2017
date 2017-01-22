@@ -35,8 +35,9 @@ public class GameManagerScript : MonoBehaviour {
 	}
 
     void SpawnCat(int player) {
-        Transform pos_one = spawnPositions[Random.Range(0, 3)];
-        Transform pos_two = spawnPositions[Random.Range(0, 3)];
+        int rand = Random.Range(0, 4);
+        Transform pos_one = spawnPositions[rand];
+        Transform pos_two = spawnPositions[(rand+1)%4];
         if (pos_one != null && pos_two != null) {
             Vector3 direction = pos_one.position - pos_two.position;
             float randomRange = Random.Range(0.0f, 1.0f);
@@ -134,8 +135,10 @@ public class GameManagerScript : MonoBehaviour {
     }
 
     public void SetStats(float maxScore,int nrCats, int bpm=60) {
+        Debug.Log(winScore + " " + numberOfCatsPerTeam + " " + bpm);
         winScore = maxScore;
         numberOfCatsPerTeam = nrCats;
         this.bpm = bpm;
+        Debug.Log(winScore + " " + numberOfCatsPerTeam + " " + bpm);
     }
 }
