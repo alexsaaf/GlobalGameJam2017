@@ -19,9 +19,9 @@ public class CatScript : MonoBehaviour {
     private float meowTimer = 0;
     public Sprite pearSprite;
     public Sprite raspSprite;
-	public Material pearDeathParticles;
-	public Material raspDeathParticles;
-	public GameObject particleEffectPrefab;
+    public Material pearDeathParticles;
+    public Material raspDeathParticles;
+    public GameObject particleEffectPrefab;
 
     // Update is called once per frame
     void Update() {
@@ -44,11 +44,11 @@ public class CatScript : MonoBehaviour {
         }
     }
 
-    public void WaveCollide () {
+    public void WaveCollide() {
         GetComponent<Animator>().Play("CatWave");
     }
 
-    public void OnDeath () {
+    public void OnDeath() {
         GameObject.Find("GameManager").GetComponent<GameManagerScript>().AddScore(playerNumber, score);
         if (playerNumber == 1) {
             GameObject obj = Instantiate(particleEffectPrefab, transform.position, transform.localRotation);
@@ -59,8 +59,8 @@ public class CatScript : MonoBehaviour {
             obj.GetComponent<ParticleSystemRenderer>().material = raspDeathParticles;
             obj.GetComponent<ParticleSystem>().Play();
         }
-        if(willhelmCat != null && willhelmScream != null) {
-            if(Random.Range(0f, 1f) <= willhelmChance) {
+        if (willhelmCat != null && willhelmScream != null) {
+            if (Random.Range(0f, 1f) <= willhelmChance) {
                 AudioSource.PlayClipAtPoint(willhelmScream, transform.position);
             } else {
                 AudioSource.PlayClipAtPoint(willhelmCat, transform.position);
@@ -68,7 +68,7 @@ public class CatScript : MonoBehaviour {
         } else {
             Debug.Log("AAAAAAAAH, add death scream files to cat");
         }
-		Destroy(gameObject);
+        Destroy(gameObject);
     }
 
     public void AssignPlayer(int playerNumber) {

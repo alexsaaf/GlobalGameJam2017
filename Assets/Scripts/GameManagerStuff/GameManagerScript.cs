@@ -8,6 +8,9 @@ public class GameManagerScript : MonoBehaviour {
     private  List<Transform> spawnPositions = new List<Transform>();
     public GameObject catPrefab;
 
+    public Color player1Color;
+    public Color player2Color;
+
     // The score for the players
     float playerOneScore = 0;
     float playerTwoScore = 0;

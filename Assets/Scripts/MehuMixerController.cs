@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class MehuMixerController : MonoBehaviour {
 
-    public Color colorOne;
-    public Color colorTwo;
+    Color colorOne;
+    Color colorTwo;
     public Color colorNeutral;
     private Color lerpedColor;
     private SpriteRenderer spriteRenderer;
@@ -14,6 +14,8 @@ public class MehuMixerController : MonoBehaviour {
     void Awake () {
         spriteRenderer = GetComponentInParent<SpriteRenderer>();
         gms = GameObject.Find("GameManager").GetComponent<GameManagerScript>();
+        colorOne = gms.player1Color;
+        colorTwo = gms.player2Color;
     }
 	
 	void Update () {
