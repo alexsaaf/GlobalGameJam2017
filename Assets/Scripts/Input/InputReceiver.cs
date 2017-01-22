@@ -19,8 +19,15 @@ public class InputReceiver : MonoBehaviour {
     private InputManager inputManager;
     
     void Start() {
-        //Color colorP1 = GameObject.Find("GameManager").GetComponent<GameManagerScript>().player1Color;
-        inputManager = new InputManager(ui, GetComponent<BeatController>());
+        GameManagerScript gms = GameObject.Find("GameManager").GetComponent<GameManagerScript>();
+        Color colorP1 = Color.red, colorP2 = Color.blue;
+        if (gms != null) {
+            //colorP1 = gms.player1Color;
+            //colorP2 = gms.player2Color;
+        } else {
+            Debug.Log("Game manager script not found in InputReceiver.Start()");
+        }
+        inputManager = new InputManager(ui, GetComponent<BeatController>(), colorP1, colorP2);
     }
     
     void Update() {

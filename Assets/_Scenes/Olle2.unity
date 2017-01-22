@@ -613,6 +613,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114332894316177828, guid: 29aa7b319f5684b46b09b99123dd8c1f,
+        type: 2}
+      propertyPath: slaughterAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: 4876fb768574ba04ea22c26e3b110107, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 29aa7b319f5684b46b09b99123dd8c1f, type: 2}
   m_IsPrefabParent: 0
@@ -3842,7 +3847,7 @@ Prefab:
     - target: {fileID: 114914931202671276, guid: 19f9b788fc67f4a49ac963251bd69e0a,
         type: 2}
       propertyPath: bpm
-      value: 120
+      value: 90
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 19f9b788fc67f4a49ac963251bd69e0a, type: 2}

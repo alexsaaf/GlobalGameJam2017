@@ -52,7 +52,11 @@ public class BeatController : MonoBehaviour {
     /// depending on thich one is closest.
     /// </summary>
     public float TimeToBeat() {
-        return Mathf.Min(timer, timeBetweenBeats - timer);
+        if (timer < timeBetweenBeats / 2) {
+            return timer;
+        } else {
+            return timer - timeBetweenBeats; // Will be a NEGATIVE number if player hits before the beat
+        }
     }
 
     public float GetTimeBetweenBeats() {

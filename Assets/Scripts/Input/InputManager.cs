@@ -9,7 +9,7 @@ public class InputManager : IInput {
 
     // TODO: Set colors, somewhere. InputManager does not feel like the
     // natural place to define these.
-    public Color colorP1, colorP2;
+    private Color colorP1, colorP2;
     private string sequenceP1 = "", sequenceP2 = "";
     private float beatMargin;
     private UIController ui;
@@ -19,18 +19,20 @@ public class InputManager : IInput {
     private bool count;
     private float timer;
 
-    private float calibration = 0.15f; 
+    private float calibration;
 
-    public InputManager(UIController ui, BeatController beatController) {
+    public InputManager(UIController ui, BeatController beatController, Color colorP1, Color colorP2) {
         this.ui = ui;
         this.beatController = beatController;
         if (beatController == null) {
             Debug.Log("BeatController is null in InputManager constructor");
         } else {
-            // This value is just a small part of the total time, modify the divider if needed;
-            beatMargin = beatController.GetTimeBetweenBeats() / 8f;
-            Debug.Log("Margin: " + beatMargin);
+            // This value is just a small part of the total time, modify the divider if needed.
+            beatMargin = beatController.GetTimeBetweenBeats() / 20f;
+            calibration = beatMargin * 2f;
         }
+        this.colorP1 = colorP1;
+        this.colorP2 = colorP2;
     }
 	
     public void playA(int playerNumber) {
@@ -50,36 +52,70 @@ public class InputManager : IInput {
     }
 
     private void addToneToSequence(string tone, int playerNumber) {
-        switch(playerNumber) {
+        float timeToBeat = GetTimeToBeat();
+        float absoluteTimeToBeat = Mathf.Abs(timeToBeat);
+        switch (playerNumber) {
             case 1:
-                if (GetTimeToBeat() <= beatMargin) {
-                    toneStreakP1 = true;
-                    hitToneP1 = true;
-                    sequenceP1 += tone;
-                    ui.UpdatePlayerSequence(playerNumber, sequenceP1);
-                    if (sequenceP1.Length == 4) {
-                        PusherHandler.instance.ActivatePusher(sequenceP1, colorP1);
-                        sequenceP1 = "";
+                if (timeToBeat < 0) { // The player hit BEFORE a beat
+                    if (timeToBeat + calibration * 4 * beatMargin <= beatMargin) {
+                        toneStreakP1 = true;
+                        hitToneP1 = true;
+                        sequenceP1 += tone;
+                        ui.UpdatePlayerSequence(playerNumber, sequenceP1);
+                        if (sequenceP1.Length == 4) {
+                            PusherHandler.instance.ActivatePusher(sequenceP1, colorP1);
+                            sequenceP1 = "";
+                        }
+                    } else {
+                        MissedTone(playerNumber, ref sequenceP1);
+                        toneStreakP1 = false;
                     }
-                } else {
-                    MissedTone(playerNumber, ref sequenceP1);
-                    toneStreakP1 = false;
+                } else { // The player hit AFTER a beat
+                    if (absoluteTimeToBeat - calibration * 7 * beatMargin <= beatMargin) {
+                        toneStreakP1 = true;
+                        hitToneP1 = true;
+                        sequenceP1 += tone;
+                        ui.UpdatePlayerSequence(playerNumber, sequenceP1);
+                        if (sequenceP1.Length == 4) {
+                            PusherHandler.instance.ActivatePusher(sequenceP1, colorP1);
+                            sequenceP1 = "";
+                        }
+                    } else {
+                        MissedTone(playerNumber, ref sequenceP1);
+                        toneStreakP1 = false;
+                    }
                 }
                 break;
             case 2:
-                Debug.Log("Time to beat: " + (GetTimeToBeat()));
-                if (GetTimeToBeat() <= beatMargin) {
-                    toneStreakP2 = true;
-                    hitToneP2 = true;
-                    sequenceP2 += tone;
-                    ui.UpdatePlayerSequence(playerNumber, sequenceP2);
-                    if (sequenceP2.Length == 4) {
-                        PusherHandler.instance.ActivatePusher(sequenceP2, colorP2);
-                        sequenceP2 = "";
+                Debug.Log("Time to beat: " + timeToBeat);
+                if (timeToBeat < 0) { // The player hit BEFORE a beat
+                    if (timeToBeat + calibration * 4 * beatMargin <= beatMargin) {
+                        toneStreakP2 = true;
+                        hitToneP2 = true;
+                        sequenceP2 += tone;
+                        ui.UpdatePlayerSequence(playerNumber, sequenceP2);
+                        if (sequenceP2.Length == 4) {
+                            PusherHandler.instance.ActivatePusher(sequenceP2, colorP2);
+                            sequenceP2 = "";
+                        }
+                    } else {
+                        MissedTone(playerNumber, ref sequenceP2);
+                        toneStreakP2 = false;
                     }
-                } else {
-                    MissedTone(playerNumber, ref sequenceP2);
-                    toneStreakP2 = false;
+                } else { // The player hit AFTER a beat
+                    if (absoluteTimeToBeat - calibration * 7 * beatMargin <= beatMargin) {
+                        toneStreakP2 = true;
+                        hitToneP2 = true;
+                        sequenceP2 += tone;
+                        ui.UpdatePlayerSequence(playerNumber, sequenceP2);
+                        if (sequenceP2.Length == 4) {
+                            PusherHandler.instance.ActivatePusher(sequenceP2, colorP2);
+                            sequenceP2 = "";
+                        }
+                    } else {
+                        MissedTone(playerNumber, ref sequenceP2);
+                        toneStreakP2 = false;
+                    }
                 }
                 break;
             default:
