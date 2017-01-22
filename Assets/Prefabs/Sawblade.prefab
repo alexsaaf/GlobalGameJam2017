@@ -139,7 +139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   catTag: Cat
-  slaughterAudio: {fileID: 8300000, guid: 1f9cc79c624f545498e00254f488bde0, type: 3}
+  slaughterAudio: {fileID: 8300000, guid: 339cda5232b60a14d80633ab3261c447, type: 3}
 --- !u!114 &114622525471546150
 MonoBehaviour:
   m_ObjectHideFlags: 1

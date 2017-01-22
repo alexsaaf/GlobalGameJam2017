@@ -55,7 +55,7 @@ public class CatScript : MonoBehaviour {
     public void AssignPlayer(int playerNumber) {
         this.playerNumber = playerNumber;
         SpriteRenderer renderer = GetComponent<SpriteRenderer>();
-        if (playerNumber == 1) { 
+        if (playerNumber == 2) { 
             renderer.sprite = pearSprite;
         } else {
             renderer.sprite = raspSprite;
