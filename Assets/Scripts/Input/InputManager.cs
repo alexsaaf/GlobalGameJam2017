@@ -21,7 +21,10 @@ public class InputManager : IInput {
 
     private float calibration;
 
-    public InputManager(UIController ui, BeatController beatController, Color colorP1, Color colorP2) {
+    private AudioClip A1, E1, D1, G1, A2, E2, D2, G2;
+
+    public InputManager(UIController ui, BeatController beatController, Color colorP1, Color colorP2, 
+        AudioClip A1, AudioClip E1, AudioClip D1, AudioClip G1, AudioClip A2, AudioClip E2, AudioClip D2, AudioClip G2) {
         this.ui = ui;
         this.beatController = beatController;
         if (beatController == null) {
@@ -33,6 +36,14 @@ public class InputManager : IInput {
         }
         this.colorP1 = colorP1;
         this.colorP2 = colorP2;
+        this.A1 = A1;
+        this.E1 = E1;
+        this.D1 = D1;
+        this.G1 = G1;
+        this.A2 = A2;
+        this.E2 = E2;
+        this.D2 = D2;
+        this.G2 = G2;
     }
 	
     public void playA(int playerNumber) {
@@ -54,8 +65,27 @@ public class InputManager : IInput {
     private void addToneToSequence(string tone, int playerNumber) {
         float timeToBeat = GetTimeToBeat();
         float absoluteTimeToBeat = Mathf.Abs(timeToBeat);
+        AudioClip clipToPlay;
         switch (playerNumber) {
             case 1:
+                switch(tone) {
+                    case "A":
+                        clipToPlay = A1;
+                        break;
+                    case "E":
+                        clipToPlay = E1;
+                        break;
+                    case "D":
+                        clipToPlay = D1;
+                        break;
+                    case "G":
+                        clipToPlay = G1;
+                        break;
+                    default:
+                        clipToPlay = A1;
+                        break;
+                }
+                AudioSource.PlayClipAtPoint(clipToPlay, new Vector3(0, 0, 0));
                 if (timeToBeat < 0) { // The player hit BEFORE a beat
                     if (timeToBeat + calibration * 4 * beatMargin <= beatMargin) {
                         toneStreakP1 = true;
@@ -87,7 +117,24 @@ public class InputManager : IInput {
                 }
                 break;
             case 2:
-                Debug.Log("Time to beat: " + timeToBeat);
+                switch (tone) {
+                    case "A":
+                        clipToPlay = A2;
+                        break;
+                    case "E":
+                        clipToPlay = E2;
+                        break;
+                    case "D":
+                        clipToPlay = D2;
+                        break;
+                    case "G":
+                        clipToPlay = G2;
+                        break;
+                    default:
+                        clipToPlay = A2;
+                        break;
+                }
+                AudioSource.PlayClipAtPoint(clipToPlay, new Vector3(0, 0, 0));
                 if (timeToBeat < 0) { // The player hit BEFORE a beat
                     if (timeToBeat + calibration * 4 * beatMargin <= beatMargin) {
                         toneStreakP2 = true;
