@@ -22,6 +22,10 @@ public class UIController : MonoBehaviour {
     public float alphaSpeed;
 
 	void Start () {
+
+        gm = GameObject.Find("GameManager").GetComponent<GameManagerScript>();
+        
+        //Get all the components and store them in the player
         player1 = new Player();
         player1.pointBar = transform.GetChild(0).GetChild(2).GetComponent<Image>();
         Transform symbolHolder = transform.GetChild(0).GetChild(3);
@@ -35,6 +39,12 @@ public class UIController : MonoBehaviour {
         player1.gColor = gColor;
         beat1 = transform.GetChild(0).GetChild(5).GetComponent<Image>();
 
+        //Set the colors to comply with the playercolors
+        beat1.color = gm.player1Color;
+        player1.pointBar.color = gm.player1Color;
+        transform.GetChild(0).GetChild(0).GetComponent<Text>().color = gm.player1Color;
+
+        //Get all the components and store them in the player
         player2 = new Player();
         player2.pointBar = transform.GetChild(1).GetChild(2).GetComponent<Image>();
         symbolHolder = transform.GetChild(1).GetChild(3);
@@ -48,7 +58,10 @@ public class UIController : MonoBehaviour {
         player2.gColor = gColor;
         beat2 = transform.GetChild(1).GetChild(5).GetComponent<Image>();
 
-        gm = GameObject.Find("GameManager").GetComponent<GameManagerScript>();
+        //Set the colors to comply with the playercolors
+        beat2.color = gm.player2Color;
+        player2.pointBar.color = gm.player2Color;
+        transform.GetChild(1).GetChild(0).GetComponent<Text>().color = gm.player2Color;
 
     }
 	
