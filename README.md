@@ -7,6 +7,9 @@ Mehukatti was developed in Unity and features local multiplayer with either keyb
 ## How to play
 To play, either clone the git repo and run the Mehukatti executable, or download it from the itch.io page [here](temp).
 
+
+![Title screen](http://ggj.s3.amazonaws.com/styles/game_content__wide/s3/games/screenshots/screenshot_1_43.png?itok=PSXDX0nr)
+![The game](http://ggj.s3.amazonaws.com/styles/game_content__wide/s3/games/screenshots/screenshot_4_15.png?itok=LWJDVhIp)
 ## Made by
 Mehukatti was made by:
 
